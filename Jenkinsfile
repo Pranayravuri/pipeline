@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        EMAIL_RECIPIENT = 'pranayravuri@gmail.com'
+        EMAIL_RECIPIENT = 'kpranay2202@gmail.com'
         EMAIL_SUBJECT = 'Jenkins Pipeline Approval Needed'
         EMAIL_BODY = "Please confirm to proceed with the Jenkins pipeline by clicking the link below:\n\n${env.BUILD_URL}input"
     }
