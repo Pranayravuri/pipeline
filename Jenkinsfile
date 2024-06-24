@@ -69,10 +69,10 @@ pipeline {
             script {
                 // Create CSV content
                 def csvContent = "Stage,Status\n"
-                csvContent += "Approval,${currentBuild.result ?: 'SUCCESS'}\n"
-                csvContent += "Build,${currentBuild.result ?: 'SUCCESS'}\n"
-                csvContent += "Test,${currentBuild.result ?: 'SUCCESS'}\n"
-                csvContent += "Deploy,${currentBuild.result ?: 'SUCCESS'}\n"
+                csvContent += "Approval,${currentBuild.result ?: 'SUCCESS'}\n\n\n\n\n"
+                csvContent += "Build,${currentBuild.result ?: 'SUCCESS'}\n\n\n\n\n"
+                csvContent += "Test,${currentBuild.result ?: 'SUCCESS'}\n\n\n\n\n"
+                csvContent += "Deploy,${currentBuild.result ?: 'SUCCESS'}\n\n\n\n\n"
                 
                 // Write CSV content to file
                 writeFile file: "${env.CSV_FILE}", text: csvContent
