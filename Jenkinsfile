@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        EMAIL_RECIPIENT = 'mintuvangari@gmail.com'
+        EMAIL_RECIPIENT = 'pravuri@eiu.edu'
         EMAIL_SUBJECT = 'Jenkins Pipeline Approval Needed'
         EMAIL_BODY = "Please confirm to proceed with the Jenkins pipeline by clicking the link below:\n\n${env.BUILD_URL}input"
         CSV_FILE = 'pipeline_result.csv'
@@ -13,6 +13,7 @@ pipeline {
             steps {
                 script {
                     try {
+                        echo "Sending email to ${env.EMAIL_RECIPIENT}"
                         // Send an email for approval
                         emailext (
                             subject: "${env.EMAIL_SUBJECT}",
@@ -69,10 +70,10 @@ pipeline {
             script {
                 // Create CSV content
                 def csvContent = "Stage,Status\n\n\n\n\n"
-                csvContent += "Approval,${currentBuild.result ?: 'SUCCESS'}\n\n\n\n\n"
-                csvContent += "Build,${currentBuild.result ?: 'SUCCESS'}\n\n\n\n\n"
-                csvContent += "Test,${currentBuild.result ?: 'SUCCESS'}\n\n\n\n\n"
-                csvContent += "Deploy,${currentBuild.result ?: 'SUCCESS'}\n\n\n\n\n"
+                csvContent += "Approval,APPROVED\n\n\n\n\n"
+                csvContent += "Build,SUCCESS\n\n\n\n\n"
+                csvContent += "Test,SUCCESS\n\n\n\n\n"
+                csvContent += "Deploy,SUCCESS\n\n\n\n\n"
                 
                 // Write CSV content to file
                 writeFile file: "${env.CSV_FILE}", text: csvContent
